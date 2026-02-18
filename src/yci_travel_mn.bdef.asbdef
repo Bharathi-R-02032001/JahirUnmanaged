@@ -1,0 +1,23 @@
+projection;
+strict ( 2 );
+
+define behavior for YCI_TRAVEL_MN //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use action accepttravel;
+  use action rejecttravel;
+  use action Copytravel;
+
+  use association _booking { create; }
+}
+
+define behavior for yci_booking_mn //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _travel;
+}

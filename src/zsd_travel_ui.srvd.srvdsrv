@@ -1,0 +1,6 @@
+@EndUserText.label: 'Travel Application Service'
+define service ZSD_Travel_UI {
+  expose ZC_Travel_mn;
+  expose ZC_BOOKING_MN;
+  expose Zc_BOOKINGSUPP_MN;
+}

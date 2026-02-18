@@ -1,0 +1,4 @@
+@EndUserText.label: 'testing'
+define service ZSD_Testing_class {
+  expose ZTEST_LIST_REPORT;
+}

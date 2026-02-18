@@ -1,0 +1,87 @@
+@Metadata.layer: #CORE
+@UI : {  headerInfo: {
+    typeName: 'Travel',
+    typeNamePlural: 'Travels',
+    title.iconUrl: 'sap-icon://flight',
+    typeImageUrl: 'sap-icon://flight',
+    title: {
+        type: #STANDARD,
+        label: 'Travels - Airlines',
+        value: 'TravelId'
+    } } }
+@Search.searchable: true
+annotate entity ZC_Travel_mn with
+{
+  @UI : { lineItem: [{ position: 10 , label: 'Travel ID' } , 
+        { type: #FOR_ACTION, dataAction: 'Copytravel' , label: 'Copy Travel' } ] ,
+          selectionField: [{ position: 10 }] ,
+          identification: [{ position: 10 , label: 'Travel ID'}],
+          facet: [{ purpose: #STANDARD ,
+                    type: #IDENTIFICATION_REFERENCE,
+                    id: 'ID1' ,
+                    label: 'Travel' ,
+                    position: 10 } ,
+                    { id: 'Booking'
+                      , purpose: #STANDARD
+                      ,  type: #LINEITEM_REFERENCE
+                      , targetElement: '_booking' ,
+                      label: 'Booking' ,
+                      position: 20 } ] 
+                       
+                   }
+  @Search.defaultSearchElement: true
+  TravelId;
+  @UI : { lineItem: [{ position: 20 , label: 'Agency ID' }],
+          identification: [{ position: 20  }] }
+  @Consumption.valueHelpDefinition:
+   [{ entity : { element: 'AgencyID' , name: '/DMO/I_AGENCY' } }]
+  @UI.textArrangement: #TEXT_ONLY 
+  AgencyId;
+  @UI :{ lineItem: [{ position: 30  , label: 'Customer ID'  }] ,
+         identification: [{ position: 30  }] }
+  @Consumption.valueHelpDefinition:
+   [{ entity : { element: 'CustomerID' , name: '/DMO/I_Customer' } }]
+  CustomerId;
+  @UI :{ lineItem: [{ position: 40 ,  label: 'Begin Date' }] ,
+         identification: [{ position: 40  }] }
+  BeginDate;
+  @UI :{ lineItem: [{ position: 50 ,  label: 'End Date'  }] ,
+         identification: [{ position: 50  }] }
+  EndDate;
+  @UI :{ lineItem: [{ position: 60 , label: 'Booking Fee' ,
+                      iconUrl: 'sap-icon://suitcase' }],
+         identification: [{ position: 55 }] }
+  BookingFee;
+  @UI :{ lineItem: [{ position: 70 , label: 'Total Price'}] ,
+        identification: [{ position: 60  }] }
+  TotalPrice;
+  @UI :{ lineItem: [{ position: 80 , hidden: true }] ,
+       identification: [{ position: 70  }] }
+  @Consumption.valueHelpDefinition:
+ [{ entity : { element: 'Currency' , name: 'I_Currency' } }]
+  CurrencyCode;
+  @UI :{ lineItem: [{ position: 90 , label: 'Description' }],
+  identification: [{ position: 80  }] }
+  Description;
+  @UI :{ lineItem: [{ position: 100 , label: 'Status' }],
+  identification: [{ position: 90  }] }
+//  @Consumption.filter: { selectionType: #RANGE }
+  @Consumption.valueHelpDefinition: [{ entity.element: 'OverallStatus' ,  entity.name: '/DMO/I_Overall_Status_VH' }]
+  Status;
+  @UI :{ lineItem: [{ position: 110 ,  hidden: true }] }
+  Createdby;
+  @UI :{ lineItem: [{ position: 120 , hidden: true }] }
+  Createdat;
+  @UI :{ lineItem: [{ position: 130  , hidden: true }] }
+  Lastchangedby;
+  @UI :{ lineItem: [{ position: 140 ,
+         hidden: true }] }
+  Lastchangedat;
+  /* Associations */
+  // _agency;
+  //_booking;
+  //_currency;
+  //_customer;
+  //_status;
+
+}

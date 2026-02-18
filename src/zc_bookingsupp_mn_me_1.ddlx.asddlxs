@@ -1,0 +1,46 @@
+@Metadata.layer: #CORE
+@UI : {  headerInfo: {
+    typeName: 'Booking Supplimenet',
+    typeNamePlural: 'Booking Supplimenet',
+    title.iconUrl: 'sap-icon://flight',
+    typeImageUrl: 'sap-icon://flight',
+    title: {
+        type: #STANDARD,
+        label: 'Booking Supplimenet - Airlines',
+        value: 'BookingSupplementId'
+    } } }
+@Search.searchable: true
+annotate entity Zc_BOOKINGSUPP_MN with
+{
+  @UI.facet: [{ purpose: #STANDARD ,
+                    type: #IDENTIFICATION_REFERENCE,
+                    position: 10 ,
+                    label: 'Booking Suppliment' } ]
+  @Search.defaultSearchElement: true
+  TravelId;
+  @Search.defaultSearchElement: true
+  BookingId;
+  @UI : { lineItem: [{ position: 10 , label: 'Booking Supplement ID' }],
+  identification: [{ position: 10  }] }
+  @Search.defaultSearchElement: true
+  @Consumption.valueHelpDefinition:
+  [{ entity : { name: '/DMO/I_SUPPLEMENT',
+                element: 'SupplementID' } }]
+  BookingSupplementId;
+  @UI : { lineItem: [{ position: 20 , label: 'Supplement ID' }],
+  identification: [{ position: 20  }] }
+  SupplementId;
+  @UI : { lineItem: [{ position: 30 , label: 'Price' }],
+  identification: [{ position: 30  }] }
+  Price;
+  @UI : { lineItem: [{ position: 40 , label: 'Currecny Code' }],
+  identification: [{ position: 40  }] }
+  CurrencyCode;
+  @UI.hidden: true
+  LastChangedAt;
+  /* Associations */
+  //    _Booking;
+  //    _supplement;
+  //    _supplementText;
+  //    _Travel;
+}

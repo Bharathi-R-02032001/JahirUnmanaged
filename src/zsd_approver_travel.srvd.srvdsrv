@@ -1,0 +1,5 @@
+@EndUserText.label: 'Travel approver'
+define service ZSD_APPROVER_travel {
+  expose YCI_TRAVEL_MN;
+  expose yci_booking_mn;
+}
